@@ -57,17 +57,14 @@ def records():
         writer.writerow([name, email, address, phone, today])
 
 
-print(records())
-
-
 def update():
-    name = input("plz enter file name: ")
-    if not path.exists(name):
+    fname = input("plz enter file name: ")
+    if not path.exists(fname):
         print("the file is not exist, try again")
         return "Null"
-
+    name=input("which contact you want to update his info: ")
     record = input("which record you want to change (name , email , phone , address):")
-    new_record = input("plz Enter your new record:")
+    new_record = input("plz Enter your new record: ")
     filename = str("contactbook_" + str((date.today()).strftime("%d-%m-%Y")) + ".csv")
     file = open(filename, 'r')
     reader = csv.reader(file)  # Read the file will be updated
@@ -80,9 +77,9 @@ def update():
                     row[0] = new_record
                 elif record == "email":
                     row[1] = new_record
-                elif record == "phone":
-                    row[2] = new_record
                 elif record == "address":
+                    row[2] = new_record
+                elif record == "phone":
                     row[3] = new_record
             rows.append(row)
     with open(filename, 'w', newline='') as update:
@@ -111,4 +108,4 @@ def delete():
 
 
 
-print(Contact_Book())
+Contact_Book()
